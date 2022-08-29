@@ -7,7 +7,7 @@ const InitialState = {
   name: "",
   password: "",
   email: "",
-  isMember: true,
+  isMember: false,
 };
 
 const Register = () => {
@@ -15,12 +15,17 @@ const Register = () => {
 
   const handleChange = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const name = e.target.name;
+    const value = e.target.value;
+    setValues({ ...values, [name]: value });
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const { name, email, password, isMember } = values;
+    if (!password || !email || (!isMember && !name)) {
+      console.log("Fill out all fields");
+    }
   };
 
   const toggleMember = () => {
