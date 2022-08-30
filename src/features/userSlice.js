@@ -9,12 +9,19 @@ const initialState = {
 };
 
 export const loginUser = createAsyncThunk(
-  "user/registerUser",
-  async (user, thunkAPI) => {}
+  "user/login",
+  async (user, thunkAPI) => {
+    try {
+      const resp = await customFetch.post("/auth/login", user);
+      return resp.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue.error.response.data.msg;
+    }
+  }
 );
 
 export const registerUser = createAsyncThunk(
-  "user/loginUser",
+  "user/registerUser",
   async (user, thunkAPI) => {
     try {
       const resp = await customFetch.post("/auth/register", user);
@@ -39,6 +46,19 @@ const userSlice = createSlice({
       toast.success(`Hello There ${user.name}`);
     },
     [registerUser.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      toast.error(payload);
+    },
+    [loginUser.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [loginUser.fulfilled]: (state, { payload }) => {
+      const { user } = payload;
+      state.isLoading = false;
+      state.user = user;
+      toast.success(`Welcome Back ${user.name}`);
+    },
+    [loginUser.rejected]: (state, { payload }) => {
       state.isLoading = false;
       toast.error(payload);
     },
