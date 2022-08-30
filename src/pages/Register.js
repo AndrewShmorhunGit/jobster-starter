@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { Logo, FormRow } from "../components";
 import Wrapper from "../assets/wrappers/RegisterPage";
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { loginUser, registerUser } from "../features/userSlice";
 
 const InitialState = {
   name: "",
@@ -13,6 +15,10 @@ const InitialState = {
 
 const Register = () => {
   const [values, setValues] = useState(InitialState);
+
+  const { user, isLoading } = useSelector((store) => store.user);
+
+  const dispatch = useDispatch();
 
   const handleChange = (e) => {
     e.preventDefault();
@@ -28,6 +34,11 @@ const Register = () => {
       toast.error("Please Fill Out All Fields");
       return;
     }
+    if (isMember) {
+      dispatch(loginUser({ email: email, password: password }));
+      return;
+    }
+    dispatch(registerUser({ email, password, name }));
   };
 
   const toggleMember = () => {
