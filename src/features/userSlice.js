@@ -7,6 +7,7 @@ import {
   getUserFromLocalStorage,
   removeUserFromLocalStorage,
 } from "../utils/localStorage";
+
 const initialState = {
   isLoading: false,
   user: getUserFromLocalStorage(),

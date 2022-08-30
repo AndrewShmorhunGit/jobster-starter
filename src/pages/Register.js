@@ -5,6 +5,7 @@ import Wrapper from "../assets/wrappers/RegisterPage";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { loginUser, registerUser } from "../features/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const InitialState = {
   name: "",
@@ -15,10 +16,18 @@ const InitialState = {
 
 const Register = () => {
   const [values, setValues] = useState(InitialState);
-
   const { user, isLoading } = useSelector((store) => store.user);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
+    }
+  }, [user]);
 
   const handleChange = (e) => {
     e.preventDefault();
