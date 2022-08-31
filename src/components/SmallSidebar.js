@@ -6,7 +6,6 @@ import Logo from "./Logo";
 import { FaTimes } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleSidebar } from "../features/userSlice";
-import Links from "../utils/links";
 
 const SmallSidebar = () => {
   const { isSidebarOpen } = useSelector((store) => store.user);
