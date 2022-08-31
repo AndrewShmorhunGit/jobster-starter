@@ -3,7 +3,7 @@ import { MdQueryStats } from "react-icons/md";
 import { FaWpforms } from "react-icons/fa";
 import { ImProfile } from "react-icons/im";
 
-const links = [
+const Links = [
   {
     id: 1,
     text: "stats",
@@ -29,3 +29,5 @@ const links = [
     icon: <ImProfile />,
   },
 ];
+
+export default Links;
