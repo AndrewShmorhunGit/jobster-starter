@@ -60,16 +60,6 @@ const Register = () => {
         <Logo />
         <h3>{values.isMember ? "Login" : "Join"}</h3>
         <div className="form-row">
-          {/* <label htmlFor="name" className="form-label">
-            name
-          </label>
-          <input
-            type="text"
-            name="name"
-            value={values.name}
-            onChange={handleChange}
-            className="form-input"
-          /> */}
           {/* name field*/}
           {values.isMember || (
             <FormRow
