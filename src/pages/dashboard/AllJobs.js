@@ -1,9 +1,15 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { JobsContainer, SearchContainer } from "../../components";
 
 const AllJobs = () => {
   const { soneState } = useSelector((store) => store.allJobs);
-  return <h1>AllJobs</h1>;
+  return (
+    <>
+      <SearchContainer />
+      <JobsContainer />
+    </>
+  );
 };
 
 export default AllJobs;
