@@ -7,9 +7,22 @@ import { getAllJobs } from "../features/allJobs/allJobsSlice";
 import PageBtnContainer from "./PageBtnContainer";
 
 const JobsContainer = () => {
-  const { jobs, isLoading, page, totalJobs, numOfPages } = useSelector(
-    (store) => store.allJobs
-  );
+  const {
+    jobs,
+    isLoading,
+    page,
+    totalJobs,
+    numOfPages,
+    search,
+    searchStatus,
+    searchType,
+    sort,
+  } = useSelector((store) => store.allJobs);
+
+  useEffect(() => {
+    dispatch(getAllJobs());
+    // eslint-disable-next-line
+  }, [page, search, searchStatus, searchType, sort]);
 
   const dispatch = useDispatch();
 
