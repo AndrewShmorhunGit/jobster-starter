@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import { showStatsThunk, getALlJobsThunk } from "./allJobsThunk";
+
 const initialFiltersState = {
   search: "",
   searchStatus: "all",
