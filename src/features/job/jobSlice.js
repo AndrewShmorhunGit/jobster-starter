@@ -11,7 +11,7 @@ const initialState = {
   jobTypeOptions: ["full-time", "part-time", "remote", "internship"],
   jobType: "full-time",
   statusOptions: ["interview", "declined", "pending"],
-  status: "pending",
+  status: "interview",
   isEditing: false,
   editJobId: "",
 };
